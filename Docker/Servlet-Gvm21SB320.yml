@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  postgres:
+    extends:
+      file: ./PostgreSQL.yml
+      service: postgres
+  people:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    image: people-servlet-gvm21-sb320:0.0.1
+    ports:
+      - 8080:8080
+      - 9080:9080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/people
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_THREADS_VIRTUAL_ENABLED: false
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 1G
+        reservations:
+          cpus: '1.00'
+          memory: 200M

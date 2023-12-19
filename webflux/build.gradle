@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+	// id 'org.graalvm.buildtools.native' version '0.9.28'
+}
+
+group = 'net.binarypaper'
+version = '0.0.1'
+
+java {
+	sourceCompatibility = '21'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+}
+
+springBoot {
+	buildInfo {
+		properties {
+			additional = [
+				"description": "A sample Spring Boot application to test the performance of the reactive WebFlux stack.",
+				"developer.name": "William Gadney",
+				"developer.email": "gadnex@gmail.com",
+				"license.name": "APACHE LICENSE, VERSION 2.0",
+				"license.url" : "https://www.apache.org/licenses/LICENSE-2.0"
+			]
+		}
+	}
+}
+
+tasks.named('processResources') {
+    expand(project.properties)
+}
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-tiny:latest'
+	imageName = "docker.io/library/people-webflux-gvm21-sb320:${project.version}"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
