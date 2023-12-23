@@ -49,7 +49,7 @@ The following table presents the actual results of the 12 test scenarios:
 | OpenJDK | Servlet | Yes | No | 17 | 299 | 9.303 | 182.7296 | 186.7 | 188 | 188.6 | 189.3 | 746.7 |
 | OpenJDK | WebFlux | Yes | No | 15 | 284 | 6.857 | 156.0851 | 174.2 | 174.6 | 174.8 | 174.8 | 696.9 |
 | GraalVM | Servlet | Yes | No | 150 | 214 | 0.428 | 80.8714 | 352.5 | 352.6 | 352.6 | 352.6 | 1409.7 |
-| GraalVM | WebFlux | Yes | No | 114 | 159 | 0.139 | 40.8944 | 358.7 | 358.8 | 358.8 | 358.9 | 1434.6 |
+| GraalVM | WebFlux | Yes | Yes | 114 | 159 | 0.139 | 40.8944 | 358.7 | 358.8 | 358.8 | 358.9 | 1434.6 |
 
 ## Data analysis
 
