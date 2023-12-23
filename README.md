@@ -36,7 +36,7 @@ If you would like to run the tests yourself. Please follow the instructions [her
 ## Actual results
 The following table presents the actual results of the 12 test scenarios:
 
-| JVM | Spring Boot Stack | Project Loom Enabled | Warm JVM | Image build time (s) | Image size (MB) | Startup Time (seconds) | Memory Usage (MB) | Create throughput | Read throughput | Update throughput | Delete throughput | Total throughput |
+| JVM | Spring Boot Stack | Project Loom Enabled | Warm VM | Image build time (s) | Image size (MB) | Startup Time (seconds) | Memory Usage (MB) | Create throughput | Read throughput | Update throughput | Delete throughput | Total throughput |
 |---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | OpenJDK | Servlet | No | No | 17 | 299 | 10.192 | 176.7829 | 208.8 | 209.6 | 209.7 | 210.1 | 835.1 |
 | OpenJDK | Servlet | No | Yes | 17 | 299 | 12.291 | 196.5141 | 441.3 | 441.3 | 441.3 | 441.4 | 1764.6 |
